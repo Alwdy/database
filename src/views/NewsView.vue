@@ -1,8 +1,7 @@
 <template>
-    <div>
-      <el-row>
-        <HeaderView />
-      </el-row>
+  <div class="wrapper">
+    <div class="header"><HeaderView /></div>
+     <div class="main">
       <el-row>
          <div style="background: #FFFFFF;height: 25px;width: 100%;line-height: 25px">
            <el-col :span="24">
@@ -21,14 +20,10 @@
          </div>
       </el-row>
       <el-divider />
-      <el-card class="box-card">
       <ArticleList />
-      </el-card>
-      <el-row>
-        <FooterView />
-      </el-row>
-
     </div>
+    <div class="footer"><FooterView /></div>
+  </div>
 </template>
 <script lang="ts" setup>
 import HeaderView from '@/components/HeaderView'
@@ -40,6 +35,9 @@ const onBack = () => {
 }
 </script>
 <style>
+.main-container{
+  min-height: calc(100vh - 100px);
+}
 .el-divider--horizontal{
      margin: 8px 0;
      background: 0 0;
@@ -47,4 +45,21 @@ const onBack = () => {
 .box-card {
   height: 480px;
 }
+.wrapper {
+        display: flex;
+        flex-direction: column;
+        min-height: 100%;
+    }
+
+    .header {
+        flex: 0;
+    }
+
+    .main{
+        flex: 1;
+    }
+
+    .footer {
+        flex: 0;
+    }
 </style>

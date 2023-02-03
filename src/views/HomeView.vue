@@ -1,90 +1,100 @@
 <template>
-   <div>
-       <el-row>
-           <HeaderView />
-       </el-row>
-
-       <el-row>
-           <div style="width: 100%">
-                <NavigatorView />
-           </div>
-       </el-row>
+   <div class="wrapper">
+       <div class="header"><HeaderView /></div>
+       <div class="main">
        <el-row>
          <div style="background: #FFFFFF;height: 20px;width: 100%;line-height: 20px">
           <el-col :span="24">
-             <div style="font-size: 15px;width: 1025px;text-align: left;display: inline-block">最新动态</div>
-             <div style="width: 200px;text-align: right;display: inline-block">
-                <el-link type="danger">more>></el-link>
+             <div style="font-size: 15px;width: 90%;text-align: left;display: inline-block">最新动态</div>
+             <div style="width: 10%;text-align: right;display: inline-block">
+                <el-link @click="news" type="danger">more>></el-link>
              </div>
           </el-col>
          </div>
        </el-row>
        <el-row>
-              <el-col :span="12">
+              <el-col :span="10">
               <el-divider />
-              <div style="width: 600px;text-align: center;display: inline-block">
               <ImageView />
-              </div>
               </el-col>
-              <el-col :span="12">
+              <el-col :span="14">
               <el-divider />
-              <div style="width: 600px;display: inline-block">
-              <ArticleList />
-              </div>
+              <TemplateNew />
               </el-col>
        </el-row>
        <el-row>
           <el-col :span="12">
-             <div style="font-size: 15px;width: 275px;text-align: left;display: inline-block">关于我们</div>
-             <div style="width: 200px;text-align: right;display: inline-block">
-                <el-link type="danger">more>></el-link>
+             <div style="font-size: 15px;width: 82%;text-align: left;display: inline-block">团队成员</div>
+             <div style="width: 10%;text-align: right;display: inline-block">
+                <el-link @click="team" type="danger">more>></el-link>
              </div>
           </el-col>
           <el-col :span="12">
-             <div style="font-size: 15px;width: 375px;text-align: left;display: inline-block">成果展示</div>
-             <div style="width: 200px;text-align: right;display: inline-block">
-                <el-link type="danger">more>></el-link>
+             <div style="font-size: 15px;width: 82%;text-align: left;display: inline-block">成果展示</div>
+             <div style="width: 10%;text-align: right;display: inline-block">
+                <el-link @click="achievement" type="danger">more>></el-link>
              </div>
           </el-col>
        </el-row>
        <el-row>
           <el-col :span="9">
              <el-divider />
-             <div style="width: 450px;display: inline-block">
-              <ContactList />
-             </div>
+             <ShowTeam />
           </el-col>
-          <el-col :span="3">
+          <el-col :span="2">
+             <el-divider />
+          </el-col>
+          <el-col :span="1">
           </el-col>
           <el-col :span="11">
              <el-divider />
-             <div style="width: 450px;display: inline-block">
-              <AchievementList />
-             </div>
+             <HomeAchievement />
           </el-col>
        </el-row>
+       </div>
+     <div class="footer">
        <FooterView />
+     </div>
    </div>
-
 </template>
 
 <script lang="ts" setup>
 import ImageView from '@/components/ImageView'
-import ArticleList from '@/components/ArticleList'
-import ContactList from '@/components/ContactList'
-import AchievementList from '@/components/AchievementList'
+import HomeNews from '@/components/HomeNews'
+import TemplateNew from '@/components/TemplateNew'
+import ShowTeam from '@/components/ShowTeam'
+import HomeAchievement from '@/components/HomeAchievement'
 import HeaderView from '@/components/HeaderView'
 import FooterView from '@/components/FooterView'
-import NavigatorView from '@/components/NavigatorView'
+import { useRouter } from 'vue-router'
 import {
   Search,
 } from '@element-plus/icons-vue'
 import { ref } from 'vue'
 const activeIndex = ref('1')
+const router = useRouter()
+function news(){
+	router.push({
+		path:'/views/NewsView', //B页面的路径
+	})
+}
+function team(){
+	router.push({
+		path:'/views/TeamView', //B页面的路径
+	})
+}
+function achievement(){
+	router.push({
+		path:'/views/AchievementView', //B页面的路径
+	})
+}
 </script>
 <style scoped>
 .flex-grow {
   flex-grow: 1;
+}
+.main-container{
+  min-height: calc(100vh - 100px);
 }
 .el-link {
   margin-right: 8px;
@@ -96,4 +106,21 @@ const activeIndex = ref('1')
      margin: 8px 0;
      background: 0 0;
 }
+.wrapper {
+        display: flex;
+        flex-direction: column;
+        min-height: 100%;
+    }
+
+    .header {
+        flex: 0;
+    }
+
+    .main{
+        flex: 1;
+    }
+
+    .footer {
+        flex: 0;
+    }
 </style>

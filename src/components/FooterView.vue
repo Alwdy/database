@@ -1,13 +1,17 @@
 <template>
-     <div style="background: #EEEEEE;height: 120px;width: 100%;line-height: 120px">
+     <div class="app-foot">
             <el-row>
-            <el-col :span="20">
-                <div style="font-size: 15px;height: 30px;width: 500px;text-align: center">
+            <el-col :span="22">
+                <div style="font-size: 15px;text-align: center;" class="item">
                 地址:重庆市沙坪坝区沙正街 174 号
                 </div>
-                <div style="font-size: 15px;width: 500px;text-align: center;display: inline-block">备案号</div>
+                <div style="font-size: 15px;text-align: center;" class="item">
+                    <span>Powered by CBEED</span>
+                    <el-divider direction="vertical" />
+                    <span>Copyright flipped-aurora团队</span>
+                </div>
             </el-col>
-            <el-col :span="4">
+            <el-col :span="2">
                 <CodeView />
             </el-col>
             </el-row>
@@ -18,4 +22,13 @@
 import CodeView from '@/components/CodeView'
 </script>
 <style scoped>
+.app-foot {
+  min-height: 100px;
+  background-color: #eeeeee;
+  margin-top: 25px;
+}
+.item {
+    padding: 5px 10px;
+    margin: 15px;
+}
 </style>

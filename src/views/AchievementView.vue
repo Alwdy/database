@@ -1,14 +1,13 @@
 <template>
-    <div>
-      <el-row>
-        <HeaderView />
-      </el-row>
+  <div class="wrapper">
+    <div class="header"><HeaderView /></div>
+     <div class="main">
       <el-row>
          <div style="background: #FFFFFF;height: 25px;width: 100%;line-height: 25px">
            <el-col :span="24">
              <el-page-header @back="onBack">
                 <template #content>
-                   <span class="text-large font-600 mr-3"> 研究动态</span>
+                   <span class="text-large font-600 mr-3"> 研究成果</span>
                 </template>
                 <template #extra>
                    <el-breadcrumb :separator-icon="ArrowRight">
@@ -21,14 +20,10 @@
          </div>
       </el-row>
       <el-divider />
-      <el-card class="box-card">
       <AchievementList />
-      </el-card>
-      <el-row>
-        <FooterView />
-      </el-row>
-
-    </div>
+      </div>
+    <div class="footer"><FooterView /></div>
+  </div>
 </template>
 <script lang="ts" setup>
 import HeaderView from '@/components/HeaderView'
@@ -44,7 +39,21 @@ const onBack = () => {
      margin: 8px 0;
      background: 0 0;
 }
-.box-card {
-  height: 480px;
-}
+.wrapper {
+        display: flex;
+        flex-direction: column;
+        min-height: 100%;
+    }
+
+    .header {
+        flex: 0;
+    }
+
+    .main{
+        flex: 1;
+    }
+
+    .footer {
+        flex: 0;
+    }
 </style>

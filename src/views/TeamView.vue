@@ -1,8 +1,7 @@
 <template>
-  <div>
-     <el-row>
-        <HeaderView />
-     </el-row>
+  <div class="wrapper">
+    <div class="header"><HeaderView /></div>
+     <div class="main">
      <el-row>
          <div style="background: #FFFFFF;height: 25px;width: 100%;line-height: 25px">
            <el-col :span="24">
@@ -21,12 +20,9 @@
          </div>
      </el-row>
      <el-divider />
-     <el-card class="box-card">
-        <TeamList />
-     </el-card>
-     <el-row>
-        <FooterView />
-     </el-row>
+     <TeamList />
+     </div>
+    <div class="footer"><FooterView /></div>
   </div>
 </template>
 <script lang="ts" setup>
@@ -43,7 +39,20 @@ const onBack = () => {
      margin: 8px 0;
      background: 0 0;
 }
-.box-card {
-  height: 600px;
+.wrapper {
+        display: flex;
+        flex-direction: column;
+        min-height: 100%;
 }
+.header {
+        flex: 0;
+    }
+
+.main{
+        flex: 1;
+    }
+
+.footer {
+        flex: 0;
+    }
 </style>

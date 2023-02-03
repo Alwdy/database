@@ -1,4 +1,5 @@
-const { defineConfig } = require('@vue/cli-service')
+
+const { defineConfig } = require('@vue/cli-service');
 module.exports = defineConfig({
   transpileDependencies: true,
   devServer: {
@@ -11,5 +12,18 @@ module.exports = defineConfig({
                 }
             }
         }
+    },
+    configureWebpack: {
+    module: {
+      rules: [{
+          test: /\.(pdf)(\?.*)?$/,
+          use: [{
+              loader: 'url-loader',
+              options: {
+                name: '[path]/[name].[hash:8].[ext]'
+              }
+            }]
+        }]
+      }
     }
 })

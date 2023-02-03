@@ -3,15 +3,19 @@
     <el-col
       v-for="(o, index) in info.list"
       :key="o"
-      :span="8"
+      :span="6"
       :offset="index > 0 ? 0.5 : 0"
     >
-      <el-card class="box-card">
-        <el-image :fit="contain"
+      <el-card @click.native="show(o.ID)" shadow="hover" class="box-card" >
+        <div style="padding: 10px;height: 275px;width: 184px">
+        <el-image
+          style="width:100%;height:100%;"
           :src="url+o.image"
+          :fit="scale-down"
           class="image"
         />
-        <div style="padding: 14px">
+        </div>
+        <div style="padding: 5px">
           <span>{{o.name}}</span>
           <div class="bottom">
             <span>{{ o.desc }}</span>
@@ -35,16 +39,21 @@ export default {
             axios
                 .get('/api/team/getTeamList')
                 .then(response => (this.info = response.data['data']))
-        }
+        },
+    methods:{
+        show(ID) {
+            this.$router.push({path:'/views/TeamDetail',query: {id: ID}});
+        },
+    }
 }
 </script>
 <style scoped>
 .box-card {
-  height: 500px;
-  width: 300px;
+  height: 375px;
+  width: 250px;
 }
 .bottom {
-  margin-top: 13px;
+  margin-top: 10px;
   line-height: 12px;
   display: flex;
   justify-content: space-between;

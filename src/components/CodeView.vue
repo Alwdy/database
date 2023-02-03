@@ -1,6 +1,6 @@
 <template>
    <div class="logo">
-      <el-image style="width: 120px; height: 120px" :src="url" :fit="contain" />
+      <el-image style="width: 100px; height: 100px" :src="url" :fit="contain" />
     </div>
 </template>
 
